@@ -1,4 +1,4 @@
-import beach from "../public/beach.jpg";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -22,34 +22,35 @@ export default function Home() {
       </section>
 
       <section className="py-16 px-6 bg-gray-50 text-center">
-  <h2 className="text-3xl font-bold mb-6">Top Destinations</h2>
+        <h2 className="text-3xl font-bold mb-6">Top Destinations</h2>
 
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-    {[
-      { name: "Bali", image: "/images/Bali.jpg" },
-      { name: "Paris", image: "/images/Paris.jpg" },
-      { name: "Tokyo", image: "/images/Tokyo.jpg" },
-    ].map((dest, index) => (
-      <div
-        key={dest.name}
-        className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition"
-      >
-        <img
-          src={dest.image}
-          alt={dest.name}
-          className="h-48 w-full object-cover"
-        />
-        <div className="p-4">
-          <h3 className="text-xl font-semibold">{dest.name}</h3>
-          <p className="text-sm text-gray-500 mt-1">
-            Experience the charm of {dest.name} with our curated itineraries.
-          </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {[
+            { name: "Bali", image: "/images/Bali.jpg" },
+            { name: "Paris", image: "/images/Paris.jpg" },
+            { name: "Tokyo", image: "/images/Tokyo.jpg" },
+          ].map((dest) => (
+            <div
+              key={dest.name}
+              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition"
+            >
+              <Image
+                src={dest.image}
+                alt={dest.name}
+                width={500}
+                height={200}
+                className="h-48 w-full object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-xl font-semibold">{dest.name}</h3>
+                <p className="text-sm text-gray-500 mt-1">
+                  Experience the charm of {dest.name} with our curated itineraries.
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-    ))}
-  </div>
-</section>
-
+      </section>
     </main>
   );
 }
